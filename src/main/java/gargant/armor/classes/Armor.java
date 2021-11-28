@@ -1,5 +1,6 @@
 package gargant.armor.classes;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,7 +22,7 @@ public class Armor {
 	 * @return whether the class is a proper armor or not.
 	 */
 	public boolean isArmor() {
-		if (this.armorType == null || materialType == null)
+		if (this.armorType == null || materialType == null || materialType.equals(Material.AIR))
 			return false;
 		return true;
 	}
@@ -52,22 +53,35 @@ public class Armor {
 		switch (ArmorType.fromMaterial(currentArmor.getType())) {
 		case BOOTS:
 			p.getInventory().setBoots(toSwitch);
-			p.getInventory().addItem(currentArmor);
 			break;
 		case LEGGINGS:
 			p.getInventory().setLeggings(toSwitch);
-			p.getInventory().addItem(currentArmor);
 			break;
 		case CHESTPLATE:
 			p.getInventory().setChestplate(toSwitch);
-			p.getInventory().addItem(currentArmor);
 			break;
 		case HELMET:
 			p.getInventory().setHelmet(toSwitch);
-			p.getInventory().addItem(currentArmor);
 			break;
-		default:
-			return;
+		}
+		p.getInventory().addItem(currentArmor);
+		p.getInventory().setItem(p.getInventory().getHeldItemSlot(), new ItemStack(Material.AIR));
+	}
+
+	public void equipArmor(Player p) {
+		switch (ArmorType.fromMaterial(this.toSwitch.getType())) {
+		case BOOTS:
+			p.getInventory().setBoots(toSwitch);
+			break;
+		case LEGGINGS:
+			p.getInventory().setLeggings(toSwitch);
+			break;
+		case CHESTPLATE:
+			p.getInventory().setChestplate(toSwitch);
+			break;
+		case HELMET:
+			p.getInventory().setHelmet(toSwitch);
+			break;
 		}
 	}
 }

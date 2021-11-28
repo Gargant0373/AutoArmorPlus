@@ -36,7 +36,6 @@ public class RightClickEvent extends Registerable {
 		if (armor.isBetter(equipped)) {
 			armor.switchArmor(ev.getPlayer(), currentArmor);
 			lib.getMessagesAPI().sendMessage("armor-equipped", ev.getPlayer());
-			
 		}
 	}
 

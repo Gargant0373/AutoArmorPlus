@@ -1,0 +1,8 @@
+name: AutoArmorPlus
+main: gargant.armor.main.AutoArmorPlus
+version: "1.0"
+author: Gargant
+commands:
+  aarmor:
+    usage: "/sudogui help"
+    description: "Main command for SudoGUI!"
